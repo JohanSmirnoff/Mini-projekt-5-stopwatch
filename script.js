@@ -4,6 +4,7 @@ let running = false;
 
 
 const startButton = document.getElementById("start-btn")
+const stopButton = document.getElementById("stop-btn")
 const resetButton = document.getElementById("reset-btn")
 let timertime = document.getElementById("timertime")
 
@@ -22,15 +23,18 @@ function ms() {
         if (running === false) {
         //     let interval = setInterval(addTime, 10);
             intervalID = setInterval(ms, 10)
-        } else {
-            clearInterval(intervalID)
-        }
+            running.valueOf = true
+
     // } else {
     //     clearInterval(intervalID)
     // }
+})
 
-
-
+    stopButton.addEventListener("click", () => {
+        if (running !== false) {
+            clearInterval()
+        }
+    })
 
 
 
@@ -46,7 +50,6 @@ function ms() {
     // if (running === true) {
     //     clearInterval()
     // }
-})
 
     //     for (timertime = 0; timertime < 1; timertime++) {
     //         timertime.textContent = (timertime)
