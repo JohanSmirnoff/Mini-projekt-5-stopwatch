@@ -28,6 +28,7 @@ function ms() {
     // } else {
     //     clearInterval(intervalID)
     // }
+        }
 })
 
     stopButton.addEventListener("click", () => {
