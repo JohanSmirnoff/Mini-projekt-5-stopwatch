@@ -2,12 +2,14 @@ let startTime = 0;
 let elapsedTime = 0;
 let intervalID = null;
 let running = false;
-
+let laps = []
 
 const startButton = document.getElementById("start-btn")
 const stopButton = document.getElementById("stop-btn")
 const resetButton = document.getElementById("reset-btn")
-let timertime = document.getElementById("timertime")
+const lapButton = document.getElementById("lap-btn")
+const timertime = document.getElementById("timertime")
+const lapList = document.getElementById("lapLista")
 
     function formatera(tid) {
         const totalTid = Math.floor(tid / 1000)
@@ -21,8 +23,7 @@ let timertime = document.getElementById("timertime")
         function uppdatera() {
             const nuvarandeTime = Date.now()
             const runningTime = nuvarandeTime - startTime
-            timertime.textContent = formatera(runningTime)
-            
+            timertime.textContent = formatera(runningTime)    
 }
     
     startButton.addEventListener("click", () => {
@@ -40,40 +41,27 @@ let timertime = document.getElementById("timertime")
             running = false
         }
     })
+
     resetButton.addEventListener("click", () => {
             clearInterval(intervalID)
+            intervalID = null
             running = false
-            startTime = "00:00:00"
-            timertime.innerHTML = startTime
+            startTime = 0
+            elapsedTime = 0
+            timertime.textContent = "00:00:00"
+            laps = []
+            lapList.textContent = ""
+            console.log(laps)
+        })
+    
+    lapButton.addEventListener('click', () => {
+        if(running === true){
+            let lapTime = Date.now() - startTime
+            laps.push(lapTime)
+            const listItem = document.createElement("li")
+            listItem.textContent = formatera(lapTime)
+            lapList.appendChild(listItem)
         }
-    )
- 
-
-
-
-
-
-
-
-
-
-
-
-    
-    // function stopTime() {
-    // if (running === true) {
-    //     clearInterval()
-    // }
-
-    //     for (timertime = 0; timertime < 1; timertime++) {
-    //         timertime.textContent = (timertime)
-    //         console.log(timertime)
-
-    //     }
-    // } else {
-    //     clearInterval()
-    // }
-
-    
-    
-
+        console.log(laps)
+    })
+ // Vi är bäst
