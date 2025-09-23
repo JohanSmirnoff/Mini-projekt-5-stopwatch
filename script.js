@@ -12,28 +12,19 @@ function ms() {
     document.getElementById("timertime").innerHTML = startTime
     startTime++
 }
-
-// function stopTime() {
-    //     clearInterval(interval)
-    // }
-    
     
     
     startButton.addEventListener("click", () => {
-        if (running === false) {
-        //     let interval = setInterval(addTime, 10);
+        if (!running) {
             intervalID = setInterval(ms, 10)
-            running.valueOf = true
-
-    // } else {
-    //     clearInterval(intervalID)
-    // }
+            running = true
         }
 })
 
     stopButton.addEventListener("click", () => {
-        if (running !== false) {
-            clearInterval()
+        if (running) {
+            clearInterval(intervalID)
+            running = false
         }
     })
 
