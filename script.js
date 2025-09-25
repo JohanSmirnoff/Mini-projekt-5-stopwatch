@@ -5,7 +5,7 @@ let running = false;
 let laps = [];
 
 const startButton = document.getElementById("start-btn");
-const stopButton = document.getElementById("stop-btn");
+// const stopButton = document.getElementById("stop-btn");
 const resetButton = document.getElementById("reset-btn");
 const lapButton = document.getElementById("lap-btn");
 const timertime = document.getElementById("timertime");
@@ -33,28 +33,43 @@ startButton.addEventListener("click", () => {
     startTime = Date.now() - elapsedTime;
     intervalID = setInterval(uppdatera, 10);
     running = true;
+    startButton.textContent = "Pause"
+    startButton.classList.remove("start");
+    startButton.classList.add("stop");
   }
-});
-
-// Stoppknappen
-stopButton.addEventListener("click", () => {
-  if (running) {
+  else {
     clearInterval(intervalID);
     elapsedTime = Date.now() - startTime;
     running = false;
+    startButton.textContent = "Start"
+    startButton.classList.remove("stop");
+    startButton.classList.add("start");
   }
 });
+
+// Gammal knapp
+// // Stoppknappen
+// stopButton.addEventListener("click", () => {
+//   if (running) {
+//     clearInterval(intervalID);
+//     elapsedTime = Date.now() - startTime;
+//     running = false;
+//   }
+// });
 
 // Resetknappen
 resetButton.addEventListener("click", () => {
   clearInterval(intervalID);
-  intervalID = null;
+  // intervalID = null;
   running = false;
   startTime = 0;
   elapsedTime = 0;
   timertime.textContent = "00:00:00";
   laps = [];
   lapList.textContent = "";
+  startButton.textContent = "Start"
+  startButton.classList.remove("stop");
+  startButton.classList.add("start");
 });
 
 // Lapknappen

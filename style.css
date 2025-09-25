@@ -49,19 +49,19 @@ button {
     cursor: pointer;
 }
 
-#start-btn {
+.start {
     background-color: #4caf50;
 }
 
-#start-btn:hover {
+.start:hover {
     background-color: #43a047;
 }
 
-#stop-btn {
+.stop {
     background-color: #f44336;
 }
 
-#stop-btn:hover {
+.stop:hover {
     background-color: #e53935;
 }
 
