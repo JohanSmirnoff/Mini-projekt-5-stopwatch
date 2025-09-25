@@ -60,7 +60,7 @@ startButton.addEventListener("click", () => {
 // Resetknappen
 resetButton.addEventListener("click", () => {
   clearInterval(intervalID);
-  // intervalID = null;
+  intervalID = null;
   running = false;
   startTime = 0;
   elapsedTime = 0;
